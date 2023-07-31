@@ -1,0 +1,12 @@
+.taskCard {
+  height: 100%;
+  width: auto;
+  background-color: transparent;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: #ffffff80;
+    box-shadow: 0 0 3px #c6c6c6;
+  }
+}
