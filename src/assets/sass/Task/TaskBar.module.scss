@@ -1,0 +1,12 @@
+.taskbar {
+  width: 100%;
+  height: 48px;
+  background-color: rgba(243, 243, 243, 0.85);
+  position: fixed;
+  bottom: 0;
+  backdrop-filter: saturate(3) blur(20px);
+
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
