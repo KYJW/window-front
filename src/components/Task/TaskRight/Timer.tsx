@@ -1,8 +1,12 @@
-import Style from '@sass/Task/TaskRight/Timer.module.scss';
-import TaskCard from '../TaskCard';
 import { useEffect, useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
+
+import TaskCard from '../TaskCard';
+
+import Style from '@sass/Task/TaskRight/Timer.module.scss';
+import Calendar from './Calendar';
 
 dayjs.locale('ko');
 const defaultNow = dayjs();
@@ -12,8 +16,16 @@ const defaultTime = defaultNow.format('hh:mm');
 
 const Timer = () => {
   const [timerMillisecond, setTimerMillisecond] = useState(1000);
+  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [time, setTime] = useState<string>(`${defaultAmpm} ${defaultTime}`);
   const [date, setDate] = useState<string>(defaultNow.format('YYYY-MM-DD'));
+
+  const calendarOpenHandler = () => {
+    setIsCalendarOpen((prev) => !prev);
+  };
+  const calendarCloseHandler = () => {
+    setIsCalendarOpen(false);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,9 +52,14 @@ const Timer = () => {
   }, [timerMillisecond]);
 
   return (
-    <TaskCard className={Style.wrapper}>
+    <TaskCard onClick={calendarOpenHandler} className={Style.wrapper}>
       <p>{time}</p>
       <p>{date}</p>
+      {isCalendarOpen && (
+        <OutsideClickHandler onOutsideClick={calendarCloseHandler}>
+          <Calendar />
+        </OutsideClickHandler>
+      )}
     </TaskCard>
   );
 };

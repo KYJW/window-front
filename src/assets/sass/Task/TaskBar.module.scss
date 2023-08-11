@@ -1,7 +1,9 @@
+@import '../color.scss';
+
 .taskbar {
   width: 100%;
   height: 48px;
-  background-color: rgba(243, 243, 243, 0.85);
+  background-color: $task-background;
   position: fixed;
   bottom: 0;
   backdrop-filter: saturate(3) blur(20px);
