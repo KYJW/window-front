@@ -1,7 +1,8 @@
 import Style from '@sass/Task/Widget/Widget.module.scss';
 import TaskCard from '../TaskCard';
+import React from 'react';
 
-const Widget = () => {
+const Widget = React.memo(() => {
   return (
     <TaskCard className={Style.widget}>
       <div className={Style['widget__weather-icon']} />
@@ -11,6 +12,6 @@ const Widget = () => {
       </div>
     </TaskCard>
   );
-};
+});
 
 export default Widget;
